@@ -15,30 +15,28 @@ function precast(Caster)
     return true
 end
 
-function cast(Caster, Target, Potency, Bonus, Chance, HP, Pwr, Speed, Air)   
+function cast(Caster, Target, SkillAmt, HP, Mana, Speed)   
 -- Summons a mount
-SetMount(Caster, 18189)
-AddControlEffect(Caster, 12)
+SetMount(Caster, 7183)
+SetMountColor(Caster, 0, 0, 0, 148, 0, 211) 
 
--- Increases Potency of caster by 7.0%
-    AddSpellBonus(Caster, 659, Potency)
+-- Increase Crushing, Piercing, Slashing, Ranged and Disruption of caster by 7.0
+ AddSkillBonus(Caster, GetSkillIDByName("Crushing"), SkillAmt)
+ AddSkillBonus(Caster, GetSkillIDByName("Piercing"), SkillAmt)
+ AddSkillBonus(Caster, GetSkillIDByName("Slashing"), SkillAmt)
+ AddSkillBonus(Caster, GetSkillIDByName("Ranged"), SkillAmt)
+ AddSkillBonus(Caster, GetSkillIDByName("Disruption"), SkillAmt)
 
--- Increases Crit Bonus of caster by 150
+
+-- Increases Max Health of caster by 150.0
     AddSpellBonus(Caster, 606, HP)
 
--- Increases Max Mana of caster by 150
+-- Increases Max Mana of caster by 150.0
     AddSpellBonus(Caster, 619, Mana)
 
--- Increases Max Health of caster by 900.0
-    AddSpellBonus(Caster, 606, HP)
-
---Increases Max Power of caster by 900.0
-    AddSpellBonus(Caster, 619, Pwr)
-
     --Increases your Ground Speed by 130%
-    --Increases your Air Speed by 150% 
     AddSpellBonus(Caster, 611, Speed)
-    AddSpellBonus(Target, 612, Air)
+
 
 end
 

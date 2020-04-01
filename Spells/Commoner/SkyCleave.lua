@@ -7,3 +7,6 @@
 --]]
 
 -- Info from spell_display_effects (remove from script when done)
+function cast(Caster, Target, DmgType, MinVal, MaxVal)
+SpellDamage(Target, DmgType, (GetLevel(Caster) * 1.08) * MinVal, (GetLevel(Caster) * 1.08) * MaxVal)
+end

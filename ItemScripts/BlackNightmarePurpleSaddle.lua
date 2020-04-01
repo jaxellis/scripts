@@ -6,6 +6,6 @@ Script Name		:	ItemScripts/BlackNightmarePurpleSaddle.lua
 	Script Notes	:	
 --]]
 function used(Item, Player)
-CastSpell(Player, 5020, 1) 
+CastSpell(Player, 5265, 1) 
 
 end
