@@ -23,10 +23,11 @@ end
 
 -- Brain override
 function Think(NPC, Target)
-	local mostHated = GetMostHated(NPC)
-	if mostHated ~= nil then
-		aggro(NPC, mostHated)
-	end
+	function Think(NPC, Target)
+    local mostHated = GetMostHated(NPC)
+    if mostHated ~= nil then
+        aggro(NPC, mostHated)
+    end
 end
 
 -- Should only cast on lost scouts (ghost version)

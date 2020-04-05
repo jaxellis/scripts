@@ -35,19 +35,16 @@ function InRange(NPC, Spawn)
 end
 
 function TimerLyingDown (NPC)
-        -- This animation is not on Live, but makes the flow of animations much smoother.
         PlayAnimation(NPC, 11769)
         AddTimer(NPC, 2400, "TimerGettingUp", 1, Spawn)
 end
 
 function TimerGettingUp (NPC)
-        -- This animation is not on Live, but makes the flow of animations much smoother.
         PlayAnimation(NPC, 11768)
         AddTimer(NPC, 2500, "TimerConfused", 1, Spawn)
 end
 
 function TimerConfused(NPC)
-        -- This animation is not on Live, but makes the flow of animations much smoother.
         PlayAnimation(NPC, 11214)
         AddTimer(NPC, 1000, "TimerResetState", 1, Spawn)
 end

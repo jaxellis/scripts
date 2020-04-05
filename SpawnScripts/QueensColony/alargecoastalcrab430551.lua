@@ -21,7 +21,7 @@ function waypoints(NPC)
 	MovementLoopAddLocation(NPC, -52.98, -9.61, 80.59, 2, math.random(16, 24))
 	MovementLoopAddLocation(NPC, -92.19, -8.48, 52.05, 2, 0)
 	MovementLoopAddLocation(NPC, -94.69, -9.25, 49.81, 2, 0)
-	MovementLoopAddLocation(NPC, -97.33, -9.98, 48.7, 2, 0)
+--	MovementLoopAddLocation(NPC, -97.33, -9.98, 48.7, 2, 0)
 	MovementLoopAddLocation(NPC, -97.27, -9.87, 48.67, 2, math.random(16, 24))
 	MovementLoopAddLocation(NPC, -95.87, -9.77, 48.07, 2, 0)
 	MovementLoopAddLocation(NPC, -94.3, -9.16, 47.83, 2, 0)
@@ -32,7 +32,7 @@ function waypoints(NPC)
 	MovementLoopAddLocation(NPC, -93.49, -8.76, 79.09, 2, math.random(16, 24))
 	MovementLoopAddLocation(NPC, -92.21, -8.37, 72.78, 2, 0)
 	MovementLoopAddLocation(NPC, -89.77, -8.03, 58.97, 2, math.random(16, 24))
-	MovementLoopAddLocation(NPC, -52.95, -9.63, 80.62, 2, 0)
+--	MovementLoopAddLocation(NPC, -52.95, -9.63, 80.62, 2, 0)
 end
 
 

@@ -3,7 +3,9 @@
     Script Author  : Zcoretri
     Script Date    : 2015.07.27
     Script Purpose : Captail Varlos dialog
-                   : 
+    Modified Data  : 2020.04.03
+    Modified by    : premierio015
+    Notes          : Added Animations
 --]]
 
 function spawn(NPC)
@@ -17,7 +19,7 @@ function hailed(NPC, Spawn)
     FaceTarget(NPC, Spawn)
     conversation = CreateConversation()
 
-    PlayFlavor(NPC, "voiceover/english/captain_varlos/boat_06p_tutorial02/varlos_0_027.mp3", "", "", 2285948102, 2994720481, Spawn)
+    PlayFlavor(NPC, "voiceover/english/captain_varlos/boat_06p_tutorial02/varlos_0_027.mp3", "", "hello", 2285948102, 2994720481, Spawn)
     AddConversationOption(conversation, "Yes.  Take me to Qeynos.", "AreYouSure")
     AddConversationOption(conversation, "Who are you?", "WhoAreYou")
     AddConversationOption(conversation, "No, I'd like to explore more.")
@@ -27,7 +29,7 @@ end
 function WhoAreYou(NPC, Spawn)
     conversation = CreateConversation()
 
-    PlayFlavor(NPC, "voiceover/english/captain_varlos/boat_06p_tutorial02/varlos_0_003.mp3", "", "", 2565389482, 560555759, Spawn)
+    PlayFlavor(NPC, "voiceover/english/captain_varlos/boat_06p_tutorial02/varlos_0_003.mp3", "", "bow", 2565389482, 560555759, Spawn)
     AddConversationOption(conversation, "I think I'm ready to leave now.", "AreYouSure")
     AddConversationOption(conversation, "I'd like to explore more.  Goodbye.")
     StartConversation(conversation, NPC, Spawn, "I am Captain Draik Varlos, and this 'ere fine ship is the Far Journey.  I can give ya' a ride to Qeynos when yer ready to leave the island.")
@@ -45,7 +47,7 @@ end
 function AreYouSure2(NPC, Spawn)
     conversation = CreateConversation()
 
-    PlayFlavor(NPC, "voiceover/english/captain_varlos/boat_06p_tutorial02/varlos_0_013.mp3", "", "", 3880459741, 170861362, Spawn)
+    PlayFlavor(NPC, "voiceover/english/captain_varlos/boat_06p_tutorial02/varlos_0_013.mp3", "", "smile", 3880459741, 170861362, Spawn)
     AddConversationOption(conversation, "Thanks for the ride!", "AreYouSure3")
     AddConversationOption(conversation, "Wait!  I've changed my mind.  Let me off.")
     StartConversation(conversation, NPC, Spawn, "Yar! That's what we be needin'.  Ok then, off to Qeynos!")
