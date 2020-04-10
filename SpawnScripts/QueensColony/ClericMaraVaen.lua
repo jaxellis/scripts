@@ -4,6 +4,9 @@
 	Script Author	: John Adams
 	Script Date	: 2008.09.20
 	Script Notes	: Auto-Generated Conversation from PacketParser Data
+        Modified Data   : 2020.09.04
+        Modified by     : premierio015
+        Notes           : Bug fixed
 --]]
 
 local JoiningTheForwardRanks = 163
@@ -27,6 +30,8 @@ function Think(NPC, Target)
     local mostHated = GetMostHated(NPC)
     if mostHated ~= nil then
         aggro(NPC, mostHated)
+else
+      -- nothing in hate list
     end
 end
 

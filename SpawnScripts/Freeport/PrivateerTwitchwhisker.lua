@@ -7,18 +7,17 @@
 --]]
 
 function spawn(NPC)
+
 end
 
 function respawn(NPC)
-	spawn(NPC)
+
 end
+
 function hailed(NPC, Spawn)
-
-end
-
-function respec(Player)
-    skill = GetSkill(Player, "Parry")
-    if skill ~= nil then
-        SetSkillValue(skill, 200)
-	end
+    local zone = GetZone(Spawn)
+    local new_spawn = SpawnMob(zone, 2530015, false, -232.91 , -56.06, 157.24, 166.65)
+    if new_spawn ~= nil then
+        AddSpawnAccess(new_spawn, Spawn)
+    end
 end

@@ -22,3 +22,8 @@ function hailed(NPC, Spawn)
     FaceTarget(NPC, Spawn)
     PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_2_1005.mp3", "", "", 0, 0, Spawn)
 end
+
+function EmoteLoop (NPC)
+	PlayAnimation(NPC, 11299)
+	AddTimer(NPC, 5000, "EmoteLoop")
+end
