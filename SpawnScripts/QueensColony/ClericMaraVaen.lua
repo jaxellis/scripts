@@ -4,18 +4,14 @@
 	Script Author	: John Adams
 	Script Date	: 2008.09.20
 	Script Notes	: Auto-Generated Conversation from PacketParser Data
-        Modified Data   : 2020.09.04
-        Modified by     : premierio015
-        Notes           : Bug fixed
 --]]
 
 local JoiningTheForwardRanks = 163
 local TheSourceOfEvil = 164
-local SpellDivineSmite = 130027
 
 function spawn(NPC)
 	SetLuaBrain(NPC)
-	SetBrainTick(NPC, 1000)
+	SetBrainTick(NPC, 500)
 	
 	ProvidesQuest(NPC, TheSourceOfEvil)
 end
@@ -26,23 +22,21 @@ end
 
 -- Brain override
 function Think(NPC, Target)
-	function Think(NPC, Target)
-    local mostHated = GetMostHated(NPC)
-    if mostHated ~= nil then
-        aggro(NPC, mostHated)
-else
-      -- nothing in hate list
-    end
+	local mostHated = GetMostHated(NPC)
+	if mostHated ~= nil then
+Say(NPC, "Has most hated")
+		aggro(NPC, mostHated)
+	end
 end
 
 -- Should only cast on lost scouts (ghost version)
 function aggro(NPC, Spawn)
 Say(NPC, "In aggro()")
 	if GetTempVariable(NPC, "CASTING") ~= "True" then
+Say(NPC, "Casting spell")
 		SetTempVariable(NPC, "CASTING", "True")
-		CastSpell(Spawn, SpellDivineSmite, 1, NPC)
-		AddTimer(NPC, 2200, "FinishedCasting")
-		ClearHate(NPC, Spawn) --DO NOT DELETE THIS LINE. Otherwise she will attempt to cast spell on a null target crashing the server
+		CastSpell(Spawn, 130027, 1, NPC)
+		AddTimer(NPC, 1610, "FinishedCasting")
 	end
 end
 

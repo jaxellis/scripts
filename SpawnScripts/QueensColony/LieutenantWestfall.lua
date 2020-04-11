@@ -6,12 +6,7 @@
                    : 
 --]]
 
-function spawn(NPC)
-
-end
-
-function respawn(NPC)
-
-end
-
 function hailed(NPC, Spawn)
+    FaceTarget(NPC, Spawn)
+    PlayFlavor(NPC, "", "What's that there!  To arms, the Morak are coming!", "point", 1689589577, 4560189, Spawn)
+end
