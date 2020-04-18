@@ -6,4 +6,19 @@
                    : 
 --]]
 
--- Info from spell_display_effects (remove from script when done)
+function cast(Caster, Target, DmgType, MinVal, MaxVal, MitMin, MitMax)
+	local Val1 = (GetLevel(Caster) * 1.08) * MitMin
+	local Val2 =  (GetLevel(Caster) * 1.08) * MitMax    
+	local MitAmt = randomFloat(Val1, Val2)
+	SpellDamage(Target, DmgType, (GetLevel(Caster) * 1.08) * MinVal, (GetLevel(Caster) * 1.08) * MaxVal)
+    AddSpellBonus(Caster, 200, MitAmt)
+    AddSpellBonus(Caster, 203, MitAmt)
+end
+
+function randomFloat(Val1, Val2)
+	return Val1 + math.random()  * (Val2 - Val1);
+end
+
+function remove(Caster, Target)
+        RemoveSpellBonus(Caster)
+end
