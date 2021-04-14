@@ -2,16 +2,15 @@
     Script Name    : SpawnScripts/FarJourneyFreeport/Ingrid.lua
     Script Author  : Cynnar
     Script Date    : 2019.10.18 06:10:27
-    Script Purpose : Controls Ingrid on TFJ. Handles quest + gossip.
-    Notes          : Edited by Neveruary 04/13/21. Combined LE + Cynnar scripts.
+    Script Purpose : 
     Notes          : 
+	Notes          : 
 --]]
 
 require "SpawnScripts/Generic/DialogModule"
 
 local TaskAboardTheFarJourney  = 524
 local TempAnimationVar = nil
-local ShardOfLucin = 12565
 
 function spawn(NPC)
 	--need to move this or grab teh spawn somehow
@@ -25,7 +24,7 @@ function spawn(NPC)
 end
 
 function hailed(NPC, Spawn)
-	
+	step = GetQuestStep(Spawn, 524)
     
 	
 	if GetTempVariable(NPC, "TempAnimationVar") == nil then
@@ -40,8 +39,8 @@ function hailed(NPC, Spawn)
 		else
 			PlayFlavor(NPC, "voiceover/english/ingrid/boat_06p_tutorial02_fvo_007.mp3", "Yo ho ho and a bottle of rum!", "smile", 964088856, 3568852318, Spawn)
 		end
-	else
-				step = GetQuestStep(Spawn, 524) 
+	end
+			
 		if step == 4 then
 			SendStateCommand(NPC, 0)
 			Dialog.New(NPC, player)
@@ -63,7 +62,7 @@ function hailed(NPC, Spawn)
 		end
 	end
 end
-	
+
 function WalkToGeredo(NPC, Spawn)
 	
 	MoveToLocation(NPC, 5.85, -2.07, -2.94, 2, nil, true)
@@ -146,6 +145,7 @@ function FlirtWithIngrid_2(NPC, Spawn)
 	end
 	
 end
+
 
 --sent form Geredo's flirt
 --sends to flustered animation next
@@ -279,11 +279,6 @@ function ReturnToSpawnPoint(NPC, Spawn)
 	
 end
 
-function thanks_for_getting_shard(NPC, player)
-	SetStepComplete(player, 524, 6) 
-	RemoveItem(player, ShardOfLucin)
-end
-
 function small_talk(NPC, player)
 	Dialog.New(NPC, player)
 	Dialog.AddDialog("I am fine, just... after the last pickup I have been working extra hard, since Vim said she would give me the piece of Luclin she found.")
@@ -318,6 +313,11 @@ end
 function finished_step_four(NPC, player)
 	SetTutorialStep(player, 22)
 	SetStepComplete(player, 524, 4) 
+end
+
+function thanks_for_getting_shard(NPC, player)
+	SetStepComplete(player, 524, 6) 
+	RemoveItem(player, ShardOfLucin)
 end
 
 function respawn(NPC)
