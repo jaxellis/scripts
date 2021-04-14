@@ -12,20 +12,15 @@ require "SpawnScripts/Generic/DialogModule"
 local TaskAboardTheFarJourney  = 524
 local TempAnimationVar = nil
 local ShardOfLuclin = 12565
-local players = {}
 
 function spawn(NPC)
-local players = GetPlayersInZone(GetZone(NPC))
-	if players[1] ~= nil then
 		SetTempVariable(NPC, "TempAnimationVar", "FirstRun")
-		AddTimer(NPC, 1500, "WalkToGeredo")
+		AddTimer(NPC, 3000, "WalkToGeredo")
 	end
-	
-end
 
 function hailed(NPC, Spawn)
 	step = GetQuestStep(Spawn, 524)
-    if step >= 3 or HasCompletedQuest(Spawn, 524) then
+    if step >= 3 or QuestIsComplete(Spawn, 524) then
 		SetTempVariable(NPC, "TempAnimationVar", nil)
 		end
 	if GetTempVariable(NPC, "TempAnimationVar") == nil then
