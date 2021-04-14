@@ -11,6 +11,7 @@ require "SpawnScripts/Generic/DialogModule"
 
 local TaskAboardTheFarJourney  = 524
 local TempAnimationVar = nil
+local ShardOfLucin = 12565
 
 function spawn(NPC)
 	--need to move this or grab teh spawn somehow
