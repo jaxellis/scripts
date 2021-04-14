@@ -11,6 +11,7 @@ require "SpawnScripts/Generic/DialogModule"
 
 local TaskAboardTheFarJourney  = 524
 local TempAnimationVar = nil
+local ShardOfLucin = 12565
 
 function spawn(NPC)
 	--need to move this or grab teh spawn somehow
@@ -40,7 +41,7 @@ function hailed(NPC, Spawn)
 			PlayFlavor(NPC, "voiceover/english/ingrid/boat_06p_tutorial02_fvo_007.mp3", "Yo ho ho and a bottle of rum!", "smile", 964088856, 3568852318, Spawn)
 		end
 	else
-				step = GetQuestStep(player, 524) 
+				step = GetQuestStep(Spawn, 524) 
 		if step == 4 then
 			SendStateCommand(NPC, 0)
 			Dialog.New(NPC, player)
