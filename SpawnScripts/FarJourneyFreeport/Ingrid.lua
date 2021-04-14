@@ -4,7 +4,7 @@
     Script Date    : 2019.10.18 06:10:27
     Script Purpose : Controls Ingrid on TFJ. Handles quest + gossip.
     Notes          : Edited by Neveruary 04/13/21. Combined LE + Cynnar scripts.
-	Notes          : 
+    Notes          : 
 --]]
 
 require "SpawnScripts/Generic/DialogModule"
