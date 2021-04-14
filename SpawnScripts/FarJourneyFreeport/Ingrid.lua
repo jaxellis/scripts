@@ -11,23 +11,23 @@ require "SpawnScripts/Generic/DialogModule"
 
 local TaskAboardTheFarJourney  = 524
 local TempAnimationVar = nil
-local ShardOfLucin = 12565
+local ShardOfLuclin = 12565
+local players = {}
 
 function spawn(NPC)
-	--need to move this or grab teh spawn somehow
-	if not HasCompletedQuest(Player, TaskAboardTheFarJourney) then
+local players = GetPlayersInZone(GetZone(NPC))
+	if players[1] ~= nil then
 		SetTempVariable(NPC, "TempAnimationVar", "FirstRun")
 		AddTimer(NPC, 1500, "WalkToGeredo")
-	else
-		SetTempVariable(NPC, "TempAnimationVar", nil)
 	end
 	
 end
 
 function hailed(NPC, Spawn)
 	step = GetQuestStep(Spawn, 524)
-    
-	
+    if step > 0 or HasCompletedQuest(Spawn, 524) then
+		SetTempVariable(NPC, "TempAnimationVar", nil)
+		end
 	if GetTempVariable(NPC, "TempAnimationVar") == nil then
 		FaceTarget(NPC, Spawn)
 		
@@ -44,7 +44,7 @@ function hailed(NPC, Spawn)
 			
 		if step == 4 then
 			SendStateCommand(NPC, 0)
-			Dialog.New(NPC, player)
+			Dialog.New(NPC, Spawn)
 			Dialog.AddDialog("Hello, how are you?")
 			Dialog.AddVoiceover("voiceover/english/ingrid/boat_06p_tutorial02/ingrid_0_001.mp3", 1960704460, 917558592)
 			Dialog.AddOption("Good, thanks. How about you?", "small_talk")
@@ -52,17 +52,17 @@ function hailed(NPC, Spawn)
 		elseif step == 5 then
 			PlayFlavor(NPC, "voiceover/english/ingrid/boat_06p_tutorial02_fvo_005.mp3", "Is Vim not going to sell it to you? That is just my luck... well I guess I will have to finish this work then.", "", 4181806501, 3186272404)
 		elseif step == 6 then
-			SetTutorialStep(player, 31)
-			AddCoin(player, 10)
-			DisplayText(player, 34, "You receive 10 Copper.")
-			Dialog.New(NPC, player)
+			SetTutorialStep(Spawn, 31)
+			AddCoin(Spawn, 10)
+			DisplayText(Spawn, 34, "You receive 10 Copper.")
+			Dialog.New(NPC, Spawn)
 			Dialog.AddDialog("Ah! You got the shard. Great! Now I can stop doing this work and enjoy the rest of this trip. Here is some coin for your help.")
 			Dialog.AddVoiceover("voiceover/english/ingrid/boat_06p_tutorial02/ingrid_0_006.mp3", 502975024, 483052250)
 			Dialog.AddOption("Thanks.", "thanks_for_getting_shard")
 			Dialog.Start()					
 		end
 	end
-end
+
 
 function WalkToGeredo(NPC, Spawn)
 	
@@ -318,7 +318,7 @@ end
 
 function thanks_for_getting_shard(NPC, player)
 	SetStepComplete(player, 524, 6) 
-	RemoveItem(player, ShardOfLucin)
+	RemoveItem(player, ShardOfLuclin)
 end
 
 function respawn(NPC)
