@@ -40,8 +40,7 @@ function hailed(NPC, Spawn)
         Dialog.AddVoiceover("voiceover/english/ingrid/boat_06p_tutorial02/ingrid_0_006.mp3", 502975024, 483052250)
         Dialog.AddOption("Thanks.", "thanks_for_getting_shard")
         Dialog.Start()
-    end
-    if GetX(NPC) < 5 then
+    elseif GetX(NPC) < 5 then
         FaceTarget(NPC, Spawn)
 
         local rand = math.random(0, 2)
