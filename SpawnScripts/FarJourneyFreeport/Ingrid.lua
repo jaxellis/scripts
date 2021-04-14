@@ -19,27 +19,6 @@ end
 
 function hailed(NPC, Spawn)
     step = GetQuestStep(Spawn, 524)
-    if step >= 3 or QuestIsComplete(Spawn, 524) then
-        SetTempVariable(NPC, "TempAnimationVar", nil)
-    end
-    if GetTempVariable(NPC, "TempAnimationVar") == nil then
-        FaceTarget(NPC, Spawn)
-
-        local rand = math.random(0, 2)
-
-        if rand == 0 then
-            PlayFlavor(NPC, "voiceover/english/ingrid/boat_06p_tutorial02_fvo_009.mp3",
-                "I hate rats, every time we dock they get on board and eat our supplies.", "grumble", 3636322414,
-                1973183674, Spawn)
-        elseif rand == 1 then
-            PlayFlavor(NPC, "voiceover/english/ingrid/boat_06p_tutorial02_fvo_008.mp3", "Don't you just love the sea?",
-                "sniff", 541733813, 1294072887, Spawn)
-        else
-            PlayFlavor(NPC, "voiceover/english/ingrid/boat_06p_tutorial02_fvo_007.mp3", "Yo ho ho and a bottle of rum!",
-                "smile", 964088856, 3568852318, Spawn)
-        end
-    end
-
     if step == 4 then
         SendStateCommand(NPC, 0)
         Dialog.New(NPC, Spawn)
@@ -61,6 +40,23 @@ function hailed(NPC, Spawn)
         Dialog.AddVoiceover("voiceover/english/ingrid/boat_06p_tutorial02/ingrid_0_006.mp3", 502975024, 483052250)
         Dialog.AddOption("Thanks.", "thanks_for_getting_shard")
         Dialog.Start()
+    end
+    if GetX(NPC) < 5 then
+        FaceTarget(NPC, Spawn)
+
+        local rand = math.random(0, 2)
+
+        if rand == 0 then
+            PlayFlavor(NPC, "voiceover/english/ingrid/boat_06p_tutorial02_fvo_009.mp3",
+                "I hate rats, every time we dock they get on board and eat our supplies.", "grumble", 3636322414,
+                1973183674, Spawn)
+        elseif rand == 1 then
+            PlayFlavor(NPC, "voiceover/english/ingrid/boat_06p_tutorial02_fvo_008.mp3", "Don't you just love the sea?",
+                "sniff", 541733813, 1294072887, Spawn)
+        else
+            PlayFlavor(NPC, "voiceover/english/ingrid/boat_06p_tutorial02_fvo_007.mp3", "Yo ho ho and a bottle of rum!",
+                "smile", 964088856, 3568852318, Spawn)
+        end
     end
 end
 
