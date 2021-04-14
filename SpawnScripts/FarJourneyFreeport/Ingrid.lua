@@ -15,7 +15,7 @@ local ShardOfLuclin = 12565
 
 function spawn(NPC)
 		SetTempVariable(NPC, "TempAnimationVar", "FirstRun")
-		AddTimer(NPC, 3000, "WalkToGeredo")
+		AddTimer(NPC, 30000, "WalkToGeredo")
 	end
 
 function hailed(NPC, Spawn)
