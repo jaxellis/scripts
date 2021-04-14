@@ -25,7 +25,7 @@ end
 
 function hailed(NPC, Spawn)
 	step = GetQuestStep(Spawn, 524)
-    if step > 0 or HasCompletedQuest(Spawn, 524) then
+    if step >= 3 or HasCompletedQuest(Spawn, 524) then
 		SetTempVariable(NPC, "TempAnimationVar", nil)
 		end
 	if GetTempVariable(NPC, "TempAnimationVar") == nil then
